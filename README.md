@@ -1,6 +1,6 @@
 # MurmHeretic
 
-HERETIC for Raspberry Pi Pico 2 (RP2350) with HDMI output, SD card, PS/2 or USB keyboard/mouse, and OPL music.
+Heretic for Raspberry Pi Pico 2 (RP2350) with HDMI output, SD card, PS/2 or USB keyboard/mouse, and OPL music.
 
 ## Supported Boards
 
