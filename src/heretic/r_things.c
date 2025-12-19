@@ -717,6 +717,12 @@ void R_DrawPSprite(pspdef_t * psp)
     vis->texturemid =
         (BASEYCENTER << FRACBITS) + FRACUNIT / 2 - (psp->sy -
                                                     spritetopoffset[lump]);
+    // Adjust for 320x240 resolution
+    if (SCREENHEIGHT == 240)
+    {
+        vis->texturemid -= (20 << FRACBITS);
+    }
+
     if (viewheight == SCREENHEIGHT)
     {
         vis->texturemid -= PSpriteSY[players[consoleplayer].readyweapon];

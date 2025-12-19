@@ -1834,6 +1834,7 @@ void G_InitNew(skill_t skill, int episode, int map)
     memset(netcmds, 0, sizeof(netcmds));
 #endif
     G_DoLoadLevel();
+    S_Start();
 }
 
 

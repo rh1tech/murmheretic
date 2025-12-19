@@ -337,7 +337,7 @@ void D_DoAdvanceDemo(void)
             pagetic = 210;
             gamestate = GS_DEMOSCREEN;
             pagename = DEH_String("TITLE");
-            S_StartSong(mus_titl, false);
+            // S_StartSong(mus_titl, false);
             break;
         case 1:
             pagetic = 140;
@@ -1091,11 +1091,6 @@ void D_DoomMain(void)
     I_InitJoystick();
     IncThermo();
 
-    tprintf(DEH_String("S_Init: Setting up sound.\n"), 1);
-    S_Init();
-    //IO_StartupTimer();
-    S_Start();
-
     tprintf(DEH_String("D_CheckNetGame: Checking network game status.\n"), 1);
     hprintf(DEH_String("Checking network game status."));
     D_CheckNetGame();
@@ -1106,6 +1101,9 @@ void D_DoomMain(void)
     tprintf(DEH_String("SB_Init: Loading patches.\n"), 1);
     SB_Init();
     IncThermo();
+
+    tprintf(DEH_String("S_Init: Setting up sound.\n"), 1);
+    S_Init();
 
 //
 // start the appropriate game based on params

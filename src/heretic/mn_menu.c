@@ -17,7 +17,11 @@
 // MN_menu.c
 
 #include <stdlib.h>
-#include <ctype.h>
+
+// Replacement for ctype.h functions to avoid locale dependency/crashes
+#define my_toupper(c) (((c) >= 'a' && (c) <= 'z') ? ((c) - 'a' + 'A') : (c))
+#define my_isalpha(c) (((c) >= 'a' && (c) <= 'z') || ((c) >= 'A' && (c) <= 'Z'))
+#define my_isdigit(c) ((c) >= '0' && (c) <= '9')
 
 #include "deh_str.h"
 #include "doomdef.h"
@@ -1631,8 +1635,8 @@ boolean MN_Responder(event_t * event)
             {
                 if (CurrentMenu->items[i].text)
                 {
-                    if (toupper(charTyped)
-                        == toupper(DEH_String(CurrentMenu->items[i].text)[0]))
+                    if (my_toupper(charTyped)
+                        == my_toupper(DEH_String(CurrentMenu->items[i].text)[0]))
                     {
                         CurrentItPos = i;
                         return (true);
@@ -1688,14 +1692,14 @@ boolean MN_Responder(event_t * event)
         }
         if (slotptr < SLOTTEXTLEN && key != KEY_BACKSPACE)
         {
-            if (isalpha(charTyped))
+            if (my_isalpha(charTyped))
             {
-                *textBuffer++ = toupper(charTyped);
+                *textBuffer++ = my_toupper(charTyped);
                 *textBuffer = ASCII_CURSOR;
                 slotptr++;
                 return (true);
             }
-            if (isdigit(charTyped) || charTyped == ' '
+            if (my_isdigit(charTyped) || charTyped == ' '
               || charTyped == ',' || charTyped == '.' || charTyped == '-'
               || charTyped == '!')
             {

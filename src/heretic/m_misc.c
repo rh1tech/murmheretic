@@ -21,8 +21,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
+// #include <ctype.h> // Removed to avoid locale dependency
 #include <errno.h>
+
+#define my_toupper(c) (((c) >= 'a' && (c) <= 'z') ? ((c) - 'a' + 'A') : (c))
+#define my_tolower(c) (((c) >= 'A' && (c) <= 'Z') ? ((c) - 'A' + 'a') : (c))
 
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
@@ -317,7 +320,7 @@ void M_MakeDirectory(const char *path)
 
     free(wdir);
 #else
-    mkdir(path, 0755);
+    // mkdir(path, 0755);
 #endif
 }
 
@@ -615,7 +618,7 @@ void M_ExtractFileBase(const char *path, char *dest)
             break;
         }
 
-	dest[length++] = toupper((int)*src++);
+	dest[length++] = my_toupper((int)*src++);
     }
 }
 
@@ -633,7 +636,7 @@ void M_ForceUppercase(char *text)
 
     for (p = text; *p != '\0'; ++p)
     {
-        *p = toupper(*p);
+        *p = my_toupper(*p);
     }
 }
 
@@ -651,7 +654,7 @@ void M_ForceLowercase(char *text)
 
     for (p = text; *p != '\0'; ++p)
     {
-        *p = tolower(*p);
+        *p = my_tolower(*p);
     }
 }
 

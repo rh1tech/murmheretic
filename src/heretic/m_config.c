@@ -2763,26 +2763,27 @@ char *M_GetSaveGameDir(const char *iwadname)
 #endif
     // If not "doing" a configuration directory (Windows), don't "do"
     // a savegame directory, either.
-    else if (!strcmp(configdir, exedir))
-    {
-	savegamedir = M_StringDuplicate("");
-    }
-    else
-    {
-        // ~/.local/share/chocolate-doom/savegames
+    // else if (!strcmp(configdir, exedir))
+    // {
+	// savegamedir = M_StringDuplicate("");
+    // }
+    // else
+    // {
+    //     // ~/.local/share/chocolate-doom/savegames
 
-        topdir = M_StringJoin(configdir, "savegames", NULL);
-        M_MakeDirectory(topdir);
+    //     topdir = M_StringJoin(configdir, "savegames", NULL);
+    //     M_MakeDirectory(topdir);
 
-        // eg. ~/.local/share/chocolate-doom/savegames/doom2.wad/
+    //     // eg. ~/.local/share/chocolate-doom/savegames/doom2.wad/
 
-        savegamedir = M_StringJoin(topdir, DIR_SEPARATOR_S, iwadname,
-                                   DIR_SEPARATOR_S, NULL);
+    //     savegamedir = M_StringJoin(topdir, DIR_SEPARATOR_S, iwadname,
+    //                                DIR_SEPARATOR_S, NULL);
 
-        M_MakeDirectory(savegamedir);
+    //     M_MakeDirectory(savegamedir);
 
-        free(topdir);
-    }
+    //     free(topdir);
+    // }
+    savegamedir = M_StringDuplicate("");
 
     return savegamedir;
 }
@@ -2793,6 +2794,8 @@ char *M_GetSaveGameDir(const char *iwadname)
 //
 char *M_GetAutoloadDir(const char *iwadname)
 {
+    return NULL;
+    /*
     char *result;
 
     if (autoload_path == NULL || strlen(autoload_path) == 0)
@@ -2816,4 +2819,5 @@ char *M_GetAutoloadDir(const char *iwadname)
     // TODO: Add README file
 
     return result;
+    */
 }

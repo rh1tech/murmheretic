@@ -224,6 +224,7 @@ static const char shiftxform[] =
 
 static unsigned char TranslateKey(unsigned char key)
 {
+    if (key == 8) return KEY_BACKSPACE;
 	return key;
 
 	/*
@@ -296,6 +297,7 @@ void I_GetEvent(void)
             event.type = ev_keydown;
             event.data1 = TranslateKey(key);
             event.data2 = GetTypedChar(key);
+            event.data3 = event.data2;
 
             if (event.data1 != 0)
             {
