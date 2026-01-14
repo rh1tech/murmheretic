@@ -150,8 +150,9 @@ picotool load -f build/murmheretic.uf2
 ## SD Card Setup
 
 1. Format an SD card as FAT32
-2. Copy `HERETIC.WAD` (full version) or `HERETIC1.WAD` (shareware) to the root of the SD card.
-3. A `.savegame/` directory will be created automatically for save files
+2. Create a `heretic` folder on the SD card
+3. Copy `HERETIC.WAD` (full version) or `HERETIC1.WAD` (shareware) to the `heretic` folder
+4. A `heretic/saves/` directory will be created automatically for save files
 
 ### Shareware WAD Downloads
 

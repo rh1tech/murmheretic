@@ -755,8 +755,8 @@ static void BuildIWADDirList(void)
         return;
     }
 
-    // Look in the current directory.  Doom always does this.
-    AddIWADDir(".");
+    // Look in the heretic directory on the SD card
+    AddIWADDir("heretic");
 
     // Next check the directory where the executable is located. This might
     // be different from the current directory.
